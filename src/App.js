@@ -29,6 +29,21 @@ class App extends Component {
         this.fetchTheseSeries("popular");
     }
 
+    fetchTheseTrending = async (type, subType) => {
+        let { setTrendingMovies, setTrendingSeries } = this.context;
+        let data = await fetchTrending(type, subType);
+        switch (type) {
+            case "movie":
+                setTrendingMovies(data.results, subType);
+                break;
+            case "series":
+                setTrendingSeries(data.results, subType);
+                break;
+            default:
+                return;
+        }
+    };
+
     fetchTheseSeries = async (type) => {
         const { setLatestSeries, setPopularSeries, setTopRatedSeries } = this.context;
         let data = await fetchSeries(type);
@@ -41,21 +56,6 @@ class App extends Component {
                 break;
             case "popular":
                 await setPopularSeries(data.results);
-                break;
-            default:
-                return;
-        }
-    };
-
-    fetchTheseTrending = async (type, subType) => {
-        let { setTrendingMovies, setTrendingSeries } = this.context;
-        let data = await fetchTrending(type, subType);
-        switch (type) {
-            case "movie":
-                setTrendingMovies(data.results, subType);
-                break;
-            case "series":
-                setTrendingSeries(data.results, subType);
                 break;
             default:
                 return;

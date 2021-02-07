@@ -26,27 +26,6 @@ export default class Home extends Component {
             trendingSeriesDayComponent = <PageLoader />,
             trendingSeriesWeekComponent = <PageLoader />;
 
-        // if (latestMovie) {
-        //     latestMovieComponent = latestMovie.backdrop_path ? (
-        //         <CardImageOverlay
-        //             type="home"
-        //             subType="latestMovie"
-        //             typeTitle={"Latest Movie"}
-        //             data={latestMovie}
-        //         />
-        //     ) : (
-        //         ""
-        //     );
-        //     // latestMovieComponent = (
-        //     //     <CardImageOverlay
-        //     //         type="home"
-        //     //         subType="latestMovie"
-        //     //         typeTitle={"Latest Movie"}
-        //     //         data={latestMovie}
-        //     //     />
-        //     // );
-        // }
-
         if (trendingMoviesDay && trendingMoviesDay.length > 0) {
             trendingMoviesDayComponent = <XScrollable type={"movie"} data={trendingMoviesDay} />;
         }
